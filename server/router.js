@@ -269,9 +269,11 @@ export default class Router {
    * @return {function}
    */
   _extraSubscription() {
+    const self = this;
+
     return function extraSubscriptionBody() {
       const { res } = this;
-      const subData = this.getContext().getData();
+      const subData = self.getContext().getData();
 
       if (res.hasHeader('access-control-allow-origin')) {
         warning(
