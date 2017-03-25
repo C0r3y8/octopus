@@ -33,13 +33,12 @@ local-test:c0r3y8:octopus@0.1.0
 localstorage@1.0.12
 logging@1.1.17
 meteor@1.6.1
-meteorhacks:meteorx@1.0.2
+meteorhacks:meteorx@1.4.1
 minimongo@1.0.21
 modules@0.7.9
 modules-runtime@0.7.9
 mongo@1.1.16
 mongo-id@1.0.6
-mongo-livedata@1.0.12
 npm-mongo@2.2.24
 observe-sequence@1.0.16
 ordered-dict@1.0.9
