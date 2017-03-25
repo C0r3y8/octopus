@@ -74,7 +74,7 @@ Package.onTest(function (api) {
 
   api.use(testPackages);
 
-  api.use('c0r3y8:octopus');
+  api.use('octopus');
 
   api.addFiles('server/router-tests.jsx', 'server');
 });
