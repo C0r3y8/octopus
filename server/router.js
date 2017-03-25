@@ -269,7 +269,7 @@ export default class Router {
    * @return {function}
    */
   _extraSubscription() {
-    return function extraSubscriptionBody() => {
+    return function extraSubscriptionBody() {
       const { res } = this;
       const subData = this.getContext().getData();
 
