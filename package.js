@@ -16,7 +16,7 @@ const basePackages = {
     'ecmascript',
     'ejson',
     'meteor',
-    'meteorhacks:meteorx',
+    'meteorhacks:meteorx@1.4.1',
     'minimongo',
     'mongo-id',
     'routepolicy'
