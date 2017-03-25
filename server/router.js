@@ -261,6 +261,7 @@ export default class Router {
     this._log('error', code, ...args);
   }
 
+  /* eslint-disable no-underscore-dangle */
   /**
    * @locus Server
    * @memberof Router
@@ -275,7 +276,7 @@ export default class Router {
       const { res } = this;
       const subData = self.getContext().getData();
 
-      if (res.hasHeader('access-control-allow-origin')) {
+      if (res._headers && res._headers[ 'access-control-allow-origin' ]) {
         warning(
           false,
           `Server subscriptions turned off due to CORS headers.
@@ -286,6 +287,7 @@ export default class Router {
       return `<script>${stringifyPreloadedSubscriptions(subData)}</script>`;
     };
   }
+  /* eslint-enable */
 
   /**
    * @locus Server
