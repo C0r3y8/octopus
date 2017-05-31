@@ -41,6 +41,8 @@ export default class Router {
    * @param {object} [router.options.engineOptions={}]
    * @param {array} [router.options.engineOptions.extras.body=[]]
    * @param {array} [router.options.engineOptions.extras.headers=[]]
+   * @param {object=} router.options.Logger
+   * @param {object=} router.options.routesHelper
    */
   constructor({ App, options = {} }) {
     assert(App, 'You must provide an app to render.');
@@ -69,6 +71,7 @@ export default class Router {
     this.modules = [];
     this.options = options;
     this.routes = [];
+    this.routesHelper = options.routesHelper;
 
     // jsPerf
     this.routes.jsperfFind = jsperfFind;
@@ -572,14 +575,24 @@ export default class Router {
    * @instance
    * @param {object} routeConfig
    * @param {boolean} [routeConfig.exact=false]
-   * @param {string} routeConfig.path
+   * @param {string=} routeConfig.key
+   * @param {string=} routeConfig.path
    * @param {boolean} [routeConfig.strict=false]
    * @param {...function} callback
    */
   route(routeConfig, ...callback) {
-    const { path } = routeConfig;
+    assert(
+      routeConfig.key || routeConfig.path,
+      'You must provide a route path.'
+    );
+
+    const path = (routeConfig.key) ?
+      this.routesHelper.get(routeConfig.key) : routeConfig.path;
 
     warning(isAppUrl(path), `Router: ${path} is not an app url`);
-    this.routes.push(new Route(routeConfig, callback));
+    this.routes.push(new Route({
+      ...routeConfig,
+      path
+    }, callback));
   }
 }

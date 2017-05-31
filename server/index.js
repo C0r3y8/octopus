@@ -6,6 +6,7 @@ import { checkNpmVersions } from 'meteor/tmeasday:check-npm-versions';
 import { WebApp } from 'meteor/webapp';
 
 import Router from './router';
+import RoutesHelper from '../both/routes-helper';
 import enableLiveDataSupport from './support/pubsub/subscribe';
 
 import {
@@ -22,7 +23,7 @@ import { isAppUrl } from '../shared/utils/urls';
 checkNpmVersions({
   react: '15.x',
   'react-dom': '15.x',
-  'react-router-dom': '4.0.0-beta.6',
+  'react-router-dom': '4.x'
 }, 'c0r3y8:octopus');
 
 /* eslint-disable max-len */
@@ -54,6 +55,7 @@ export {
   jsperfFilter,
   jsperfFind,
   jsperfForEach,
-  Octopus
+  Octopus,
+  RoutesHelper
 };
 /* eslint-enable */
