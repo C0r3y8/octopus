@@ -93,7 +93,7 @@ export default class Router {
   }
   /**
    * @summary Adds module
-   * @locus Server
+   * @locus Client
    * @memberof Router
    * @method module
    * @instance
