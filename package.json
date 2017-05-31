@@ -3,10 +3,9 @@
   "private": true,
   "scripts": {
     "start": "meteor run",
-    "test": "spacejam test-packages ./ --driver-package=practicalmeteor:mocha-console-runner"
+    "test": "spacejam test-packages ./src --driver-package=practicalmeteor:mocha-console-runner"
   },
   "dependencies": {
-    "assert": "^1.4.1",
     "babel-plugin-dev-expression": "^0.2.1",
     "babel-plugin-module-resolver": "^2.7.1",
     "babel-plugin-transform-class-properties": "^6.24.1",
@@ -22,15 +21,15 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-runtime": "^6.23.0",
-    "connect-redirection": "^0.0.1",
     "fibers": "^1.0.15",
-    "meteor-node-stubs": "^0.2.6",
-    "path-to-regexp": "^1.7.0",
-    "warning": "^3.0.0"
+    "meteor-node-stubs": "^0.2.8",
+    "react": "^15.5.4",
+    "react-addons-pure-render-mixin": "^15.5.2",
+    "react-dom": "^15.5.4",
+    "react-router-dom": "^4.1.1"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",
-    "chai-webdriver-promised": "^4.0.3",
     "eslint": "^3.14.1",
     "eslint-config-airbnb": "^15.0.1",
     "eslint-import-resolver-meteor": "^0.4.0",
@@ -38,14 +37,6 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^5.0.3",
     "eslint-plugin-meteor": "^4.0.1",
-    "eslint-plugin-react": "^7.0.1",
-    "faker": "^4.1.0",
-    "selenium-webdriver": "^2.53.3"
-  },
-  "peerDependencies": {
-    "react": "^15.5.4",
-    "react-addons-pure-render-mixin": "^15.5.2",
-    "react-dom": "^15.5.4",
-    "react-router-dom": "^4.1.1"
+    "eslint-plugin-react": "^7.0.1"
   }
 }
