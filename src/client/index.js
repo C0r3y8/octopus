@@ -1,13 +1,8 @@
-/* eslint-disable import/no-unresolved */
-import redirect from 'connect-redirection';
-/* eslint-enable */
-
 import { checkNpmVersions } from 'meteor/tmeasday:check-npm-versions';
-import { WebApp } from 'meteor/webapp';
 
 import Router from './router';
-import RoutesHelper from '../both/routes-helper';
-import enableLiveDataSupport from './support/pubsub/subscribe';
+import RoutesHelper from '../shared/helpers/routes';
+import enableLiveDataSupport from './support/pubsub/connection';
 
 import {
   jsperfFilter,
@@ -27,23 +22,17 @@ checkNpmVersions({
 }, 'c0r3y8:octopus');
 
 /* eslint-disable max-len */
-/* eslint-disable import/prefer-default-export, func-names, no-unused-vars, prefer-arrow-callback */
+/* eslint-disable import/prefer-default-export, func-names, prefer-arrow-callback */
 /* eslint-enable max-len */
-const Octopus = (App, clientOptions, serverOptions) => {
+const Octopus = (App, clientOptions) => {
   const app = new Router({
     App,
-    options: serverOptions
+    options: clientOptions
   });
 
   enableLiveDataSupport(app);
 
-  WebApp.rawConnectHandlers
-    .use(redirect());
-
-  WebApp.connectHandlers
-    .use(function (req, res, next) {
-      app.callback(req, res, next);
-    });
+  app.initStartup();
 
   return app;
 };
