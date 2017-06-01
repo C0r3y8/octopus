@@ -9,6 +9,7 @@ import Router from './router';
 import RoutesHelper from '../shared/helpers/routes';
 import enableLiveDataSupport from './support/pubsub/subscribe';
 
+import { NotFound } from '../shared/hoc/not-found';
 import {
   jsperfFilter,
   jsperfFind,
@@ -55,6 +56,7 @@ export {
   jsperfFilter,
   jsperfFind,
   jsperfForEach,
+  NotFound,
   Octopus,
   RoutesHelper
 };
