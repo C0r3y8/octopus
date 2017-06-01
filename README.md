@@ -43,7 +43,12 @@ Also, you can use [modules](#using-a-module) to add some good stuff like Redux o
 
 ## Installation
 
-For the instance, this package is not published on [Atmosphere](https://atmospherejs.com/) but you can clone this repo and copy / paste `c0r3y8_octopus` in `packages` folder into your project.
+__Atmosphere:__
+```bash
+$ meteor add c0r3y8:octopus
+```
+
+> [Atmosphere page](https://atmospherejs.com/c0r3y8/octopus)
 
 ## Examples
 
