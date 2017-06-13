@@ -25,11 +25,11 @@ A router that enables __SSR__ (Server Side Rendering) for [Meteor](https://www.m
 
 ## Table of Contents
 1. [Introduction](#introduction)
-2. [Installation](#Installation)
-3. [Example](#example)
+2. [Installation](#installation)
+3. [Examples](#examples)
 4. [API](#api)
-5. [RouteDescriptor](#RouteDescriptor)
-6. [HOC](#HOC)
+5. [RouteDescriptor](#routedescriptor)
+6. [HOC](#hoc)
 7. [Create a module](#create-a-module)
 8. [Create an engine](#create-an-engine)
 9. [Sources](#sources)
