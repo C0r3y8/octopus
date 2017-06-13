@@ -1,7 +1,7 @@
 import React from 'react';
 
-/* eslint-disable import/prefer-default-export, no-param-reassign */
-export const NotFound = Component =>
+/* eslint-disable no-param-reassign */
+export default Component =>
   (props, { router }) => {
     if (Meteor.isServer) {
       router.staticContext.notFound = true;

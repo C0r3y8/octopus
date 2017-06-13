@@ -1,10 +1,11 @@
 import { checkNpmVersions } from 'meteor/tmeasday:check-npm-versions';
 
+import RouteDescriptor from '../shared/utils/route-descriptor';
 import Router from './router';
-import RoutesHelper from '../shared/helpers/routes';
 import enableLiveDataSupport from './support/pubsub/connection';
+import keyToUrl from '../shared/hoc/key-to-url';
+import notFound from '../shared/hoc/not-found';
 
-import { NotFound } from '../shared/hoc/not-found';
 import {
   jsperfFilter,
   jsperfFind,
@@ -45,8 +46,9 @@ export {
   jsperfFilter,
   jsperfFind,
   jsperfForEach,
-  NotFound,
+  keyToUrl,
+  notFound,
   Octopus,
-  RoutesHelper
+  RouteDescriptor
 };
 /* eslint-enable */

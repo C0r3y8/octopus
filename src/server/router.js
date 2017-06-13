@@ -42,7 +42,7 @@ export default class Router {
    * @param {array} [router.options.engineOptions.extras.body=[]]
    * @param {array} [router.options.engineOptions.extras.headers=[]]
    * @param {object=} router.options.Logger
-   * @param {object=} router.options.routesHelper
+   * @param {object=} router.options.routeDesc
    */
   constructor({ App, options = {} }) {
     assert(App, 'You must provide an app to render.');
@@ -71,10 +71,14 @@ export default class Router {
     this.modules = [];
     this.options = options;
     this.routes = [];
-    this.routesHelper = options.routesHelper;
+    this.routeDesc = options.routeDesc.getRoutes();
 
     // jsPerf
+    this.routeDesc.jsperfForEach = jsperfForEach;
     this.routes.jsperfFind = jsperfFind;
+
+    // routes
+    this._loadRoutes();
   }
 
   /* eslint-disable no-param-reassign */
@@ -355,6 +359,21 @@ export default class Router {
   /**
    * @locus Server
    * @memberof Router
+   * @method _loadRoutes
+   * @instance
+   */
+  _loadRoutes() {
+    this.routeDesc.jsperfForEach((route) => {
+      this.route({
+        ...route.config,
+        path: route.url
+      }, ...route.callback);
+    });
+  }
+
+  /**
+   * @locus Server
+   * @memberof Router
    * @method _log
    * @instance
    * @param {string} type
@@ -575,19 +594,14 @@ export default class Router {
    * @instance
    * @param {object} routeConfig
    * @param {boolean} [routeConfig.exact=false]
-   * @param {string=} routeConfig.key
    * @param {string=} routeConfig.path
    * @param {boolean} [routeConfig.strict=false]
    * @param {...function} callback
    */
   route(routeConfig, ...callback) {
-    assert(
-      routeConfig.key || routeConfig.path,
-      'You must provide a route path.'
-    );
+    assert(routeConfig.path, 'You must provide a route path.');
 
-    const path = (routeConfig.key) ?
-      this.routesHelper.get(routeConfig.key) : routeConfig.path;
+    const { path } = routeConfig;
 
     warning(isAppUrl(path), `Router: ${path} is not an app url`);
     this.routes.push(new Route({
